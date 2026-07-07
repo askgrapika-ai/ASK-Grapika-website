@@ -1,0 +1,387 @@
+﻿﻿﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Us - ASK Grapika</title>
+  <meta name="description" content="Get in touch with ASK Grapika - let's build something creative together." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2&bull;family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Montserrat:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .page-main { padding-top: 64px; }
+    .contact-page {
+      position: relative;
+      min-height: 100vh;
+      background: var(--dark);
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+    }
+    .contact-bg {
+      position: absolute;
+      inset: 0;
+    }
+    .contact-bg-img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      opacity: 0.12;
+    }
+    .contact-bg-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(10,10,10,0.75);
+    }
+    .contact-inner {
+      position: relative;
+      z-index: 1;
+      max-width: 1100px;
+      margin: 0 auto;
+      width: 100%;
+      padding: 5rem 2rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+    .contact-info h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+    }
+    .contact-info p {
+      font-size: 0.95rem;
+      color: var(--grey-1);
+      line-height: 1.9;
+      margin-bottom: 2.5rem;
+    }
+    .contact-detail {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      margin-bottom: 2.5rem;
+    }
+    .contact-detail-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.8);
+    }
+    .contact-detail-icon {
+      color: var(--orange);
+      font-size: 1.2rem;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    /* Form */
+    .contact-form {
+      background: rgba(20,10,0,0.7);
+      border: 1px solid rgba(255,87,34,0.2);
+      border-radius: var(--radius-lg);
+      padding: 2.5rem;
+      backdrop-filter: blur(10px);
+    }
+    .contact-form h2 {
+      font-family: var(--font-display);
+      font-size: 1.6rem;
+      font-weight: 700;
+      margin-bottom: 2rem;
+      color: var(--white);
+    }
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      margin-bottom: 1.25rem;
+    }
+    .form-group label {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--grey-1);
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,87,34,0.2);
+      border-radius: var(--radius);
+      padding: 0.85rem 1rem;
+      color: var(--white);
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      outline: none;
+      transition: border-color var(--transition), box-shadow var(--transition);
+      width: 100%;
+    }
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      border-color: var(--orange);
+      box-shadow: 0 0 0 3px rgba(255,87,34,0.12);
+    }
+    .form-group textarea { resize: vertical; min-height: 120px; }
+    .form-group select option { background: var(--dark-2); }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .form-submit {
+      width: 100%;
+      padding: 1rem;
+      background: var(--orange);
+      color: var(--white);
+      border: none;
+      border-radius: 50px;
+      font-family: var(--font-body);
+      font-weight: 700;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: background var(--transition), box-shadow var(--transition), transform var(--transition);
+      margin-top: 0.5rem;
+      letter-spacing: 0.5px;
+    }
+    .form-submit:hover {
+      background: var(--orange-light);
+      box-shadow: 0 0 30px rgba(255,87,34,0.45);
+      transform: translateY(-2px);
+    }
+    @media (max-width: 768px) {
+      .contact-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+      .form-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="navbar scrolled" id="navbar">
+    <div class="nav-container">
+      <div class="nav-logo" onclick="window.location='index.html'">
+        <span class="logo-ask">ASK</span>
+        <span class="logo-grapika">Grapika</span>
+      </div>
+      <nav class="nav-links" id="navLinks">
+        <a href="index.html"    class="nav-link"       id="nav-home">Home</a>
+        <a href="about.html"   class="nav-link"       id="nav-about">About</a>
+        <a href="services.html" class="nav-link"         id="nav-services">Services</a>
+        <a href="clients.html"  class="nav-link"         id="nav-clients">Who We Work With</a>
+        <a href="works.html"   class="nav-link"       id="nav-works">Works</a>
+        <a href="contact.html" class="nav-link active" id="nav-contact">Contact Us</a>
+      </nav>
+      <button class="burger" id="burger" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main class="page-main">
+    <section class="contact-page" id="contact-section">
+      <div class="contact-bg">
+        <img src="assets/bg.png" alt="" class="contact-bg-img" />
+        <div class="contact-bg-overlay"></div>
+      </div>
+      <div class="contact-inner">
+
+        <!-- Left: Info -->
+        <div class="contact-info animate-slide-left">
+          <h1><span class="orange-text">Let's</span> Talk</h1>
+          <p>Have a project in mind&bull; We'd love to hear about it. Drop us a message and let's create something extraordinary together.</p>
+          <div class="contact-detail">
+            <div class="contact-detail-item" id="contact-email">
+              <span class="contact-detail-icon"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg></span>
+              <span>askgrapika@gmail.com</span>
+            </div>
+            <div class="contact-detail-item" id="contact-location">
+              <span class="contact-detail-icon"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg></span>
+              <span>Boda Hanuman mandir, Yerramillistreet,<br/>Amalapuram, Konaseema dist,<br/>Andhra Pradesh - 533201</span>
+            </div>
+            <div class="contact-detail-item" id="contact-phone">
+              <span class="contact-detail-icon"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg></span>
+              <span><a href="https://wa.me/919100604935" style="color:inherit;text-decoration:none;">+91 91006 04935</a></span>
+            </div>
+          </div>
+                    <a href="https://www.youtube.com/@ASKgrapika" class="social-link" id="social-youtube" aria-label="YouTube" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+          </a>
+<div class="footer-socials">
+            <a href="https://www.instagram.com/askgrapika/" class="social-link" id="social-instagram" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            </a>
+            <a href="https://wa.me/919100604935" class="social-link" id="social-whatsapp" aria-label="WhatsApp" target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            </a>
+            <a href="https://www.facebook.com/share/1DEVViSaph/" class="social-link" id="social-facebook" aria-label="Facebook" target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            </a>
+            <a href="https://www.behance.net/suryakrishnachanakya" class="social-link" id="social-behance" aria-label="Behance" target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 7h-7V5h7v2zm1.726 10c-.442 1.297-2.029 3-5.101 3-3.074 0-5.564-1.729-5.564-5.675 0-3.91 2.325-5.92 5.466-5.92 3.082 0 4.964 1.782 5.375 4.426.078.506.109 1.188.095 2.14H15.97c.13 3.211 3.483 3.312 4.588 2.029H23.72zm-7.726-3h3.427c-.123-1.979-1.32-2.004-1.758-2-1.49 0-1.56 1.583-1.669 2zM7.17 10.6c.857-.107 1.874-.428 1.874-1.798 0-1.37-.893-1.82-2.274-1.82H1v10.04h5.917c2.084 0 3.336-.893 3.336-2.857 0-1.607-.893-2.454-3.083-2.454v-.011zm-3.64-1.74h2.917c.75 0 1.25.25 1.25 1 0 .75-.5 1.083-1.25 1.083H3.53V8.86zm3.25 5.714H3.53v-2.5h3.25c.893 0 1.5.357 1.5 1.25s-.607 1.25-1.5 1.25z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Right: Form -->
+        <form class="contact-form animate-slide-right" id="contact-form" onsubmit="handleSubmit(event)">
+          <h2>Send a Message</h2>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="contact-name">Your Name</label>
+              <input type="text" id="contact-name" name="name" placeholder="John Doe" required />
+            </div>
+            <div class="form-group">
+              <label for="contact-email-field">Email</label>
+              <input type="email" id="contact-email-field" name="email" placeholder="you@email.com" required />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="contact-phone-field">Contact Number</label>
+              <input type="tel" id="contact-phone-field" name="phone" placeholder="+91 98765 43210" required />
+            </div>
+            <div class="form-group">
+              <label for="contact-service">Service Needed</label>
+              <select id="contact-service" name="service">
+                <option value="">Select a service...</option>
+                <option value="ai-creative">AI Creative Services</option>
+                <option value="ai-design">AI Design &amp; Visualization</option>
+                <option value="uiux">UI/UX Design</option>
+                <option value="graphic">Graphic Design</option>
+                <option value="video">Video Editing</option>
+                <option value="album">Album Design &amp; Printing</option>
+                <option value="corporate">Corporate Gifting</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="contact-message">Message</label>
+            <textarea id="contact-message" name="message" placeholder="Tell us about your project..." required></textarea>
+          </div>
+          <button type="submit" class="form-submit" id="form-submit-btn">Send Message &rarr;</button>
+        </form>
+
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer" id="footer-contact">
+    <div class="footer-container">
+      <div class="footer-col footer-brand">
+        <div class="footer-logo">
+          <span class="logo-ask">ASK</span>
+          <span class="logo-grapika">Grapika</span>
+        </div>
+        <p class="footer-desc">Crafting modern digital experiences through creativity, design, storytelling, and innovative visual solutions.</p>
+      </div>
+      <div class="footer-col footer-links">
+        <h4 class="footer-heading">Quick Links</h4>
+        <ul>
+          <li><a href="index.html"    id="footer-home">Home</a></li>
+          <li><a href="about.html"    id="footer-about">About</a></li>
+          <li><a href="services.html" id="footer-services">Services</a></li>
+          <li><a href="clients.html"  id="footer-clients">Who We Work With</a></li>
+          <li><a href="works.html"    id="footer-works">Works</a></li>
+          <li><a href="contact.html"  id="footer-contact-link">Contact Us</a></li>
+        </ul>
+      </div>
+      <div class="footer-col footer-contact-info">
+        <h4 class="footer-heading">Email &amp; Location</h4>
+        <p><span class="contact-label">Email:</span> askgrapika@gmail.com</p>
+        <p><span class="contact-label">Location:</span> Boda Hanuman mandir, Yerramillistreet,<br/>Amalapuram, Konaseema dist,<br/>Andhra Pradesh - 533201</p>
+                  <a href="https://www.youtube.com/@ASKgrapika" class="social-link" id="social-youtube" aria-label="YouTube" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+          </a>
+<div class="footer-socials">
+          <a href="https://www.instagram.com/askgrapika/" class="social-link" id="social-instagram" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </a>
+          <a href="https://wa.me/919100604935" class="social-link" id="social-whatsapp" aria-label="WhatsApp" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          </a>
+          <a href="https://www.facebook.com/share/1DEVViSaph/" class="social-link" id="social-facebook" aria-label="Facebook" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+          </a>
+          <a href="https://www.behance.net/suryakrishnachanakya" class="social-link" id="social-behance" aria-label="Behance" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 7h-7V5h7v2zm1.726 10c-.442 1.297-2.029 3-5.101 3-3.074 0-5.564-1.729-5.564-5.675 0-3.91 2.325-5.92 5.466-5.92 3.082 0 4.964 1.782 5.375 4.426.078.506.109 1.188.095 2.14H15.97c.13 3.211 3.483 3.312 4.588 2.029H23.72zm-7.726-3h3.427c-.123-1.979-1.32-2.004-1.758-2-1.49 0-1.56 1.583-1.669 2zM7.17 10.6c.857-.107 1.874-.428 1.874-1.798 0-1.37-.893-1.82-2.274-1.82H1v10.04h5.917c2.084 0 3.336-.893 3.336-2.857 0-1.607-.893-2.454-3.083-2.454v-.011zm-3.64-1.74h2.917c.75 0 1.25.25 1.25 1 0 .75-.5 1.083-1.25 1.083H3.53V8.86zm3.25 5.714H3.53v-2.5h3.25c.893 0 1.5.357 1.5 1.25s-.607 1.25-1.5 1.25z"/></svg>
+          </a>
+        </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&#169; 2026 ASK Grapika. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    function handleSubmit(e) {
+      e.preventDefault();
+      const btn = document.getElementById('form-submit-btn');
+      
+      const name = document.getElementById('contact-name').value;
+      const email = document.getElementById('contact-email-field').value;
+      const phone = document.getElementById('contact-phone-field').value;
+      const service = document.getElementById('contact-service').value;
+      const message = document.getElementById('contact-message').value;
+
+      btn.disabled = true;
+      btn.innerHTML = 'Sending...';
+
+      // --- Google Sheets Integration ---
+      // Replace with your Google Apps Script URL after deploying
+      const scriptUrl = 'https://script.google.com/macros/s/AKfycbxe3GwJg4tcOV7nmRxMDDFFF4q3HOK8a5b2lmDSOWAFTRZLg1xtCtlcOtet8eD3whlr/exec';
+
+      if (scriptUrl === 'YOUR_GOOGLE_SCRIPT_URL_HERE') {
+        simulateSuccess(btn, e.target);
+        return;
+      }
+
+      fetch(scriptUrl, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          name: name,
+          email: email,
+          phone: phone,
+          service: service,
+          message: message
+        })
+      })
+      .then(() => {
+        simulateSuccess(btn, e.target);
+      })
+      .catch(error => {
+        console.error('Error submitting form:', error);
+        btn.innerHTML = 'Error! Try Again';
+        btn.style.background = '#e74c3c';
+        setTimeout(() => {
+          btn.disabled = false;
+          btn.innerHTML = 'Send Message &rarr;';
+          btn.style.background = '';
+        }, 3000);
+      });
+    }
+
+    function simulateSuccess(btn, form) {
+      btn.innerHTML = '&#10004; Message sent!';
+      btn.style.background = '#2ecc71';
+      btn.style.boxShadow = '0 0 20px rgba(46,204,113,0.4)';
+      setTimeout(() => {
+        btn.disabled = false;
+        btn.innerHTML = 'Send Message &rarr;';
+        btn.style.background = '';
+        btn.style.boxShadow = '';
+        form.reset();
+      }, 3000);
+    }
+  </script>
+</body>
+</html>
+
+
+
+
+
+
