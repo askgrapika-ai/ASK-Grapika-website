@@ -1,0 +1,284 @@
+﻿﻿﻿﻿﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ASK Grapika - We Cook All Kind of Design Recepies</title>
+  <meta name="description" content="ASK Grapika is a modern creative Studio specializing in graphic design, UI/UX, AI Design, branding, video editing, and digital visual experiences." />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ========== NAVBAR ========== -->
+  <header class="navbar" id="navbar">
+    <div class="nav-container">
+      <div class="nav-logo" onclick="window.location='index.html'">
+        <span class="logo-ask">ASK</span>
+        <span class="logo-grapika">Grapika</span>
+      </div>
+      <nav class="nav-links" id="navLinks">
+        <a href="index.html"     class="nav-link active" id="nav-home">Home</a>
+        <a href="about.html"    class="nav-link"         id="nav-about">About</a>
+        <a href="services.html" class="nav-link"         id="nav-services">Services</a>
+        <a href="clients.html"  class="nav-link"         id="nav-clients">Who We Work With</a>
+        <a href="works.html"    class="nav-link"         id="nav-works">Works</a>
+        <a href="contact.html"  class="nav-link"         id="nav-contact">Contact Us</a>
+      </nav>
+      <button class="burger" id="burger" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ========== HERO ========== -->
+    <section class="hero" id="home">
+      <div class="hero-bg">
+        <img src="assets/hero-bg.png" alt="Studio Background" class="hero-bg-img" />
+        <div class="hero-overlay"></div>
+      </div>
+      <div class="hero-content">
+        <!-- "Welcome to the world of" in Satista -->
+        <p class="hero-subtitle animate-fade-up">Welcome to the world of</p>
+
+        <!-- AsK Logo as IMAGE (not text) -->
+        <div class="animate-fade-up delay-1">
+          <img
+            src="assets/Studio-logo-card.png"
+            alt="ASK Grapika Logo"
+            class="hero-logo-img"
+          />
+        </div>
+
+        <!-- Tagline -->
+        <p class="hero-tagline animate-fade-up delay-2">"We Cook All kind of Design Recepies"</p>
+
+        <!-- CTA Buttons -->
+        <div class="hero-cta-row animate-fade-up delay-3">
+          <a href="services.html" class="btn btn-orange" id="hero-explore-btn">Explore Services</a>
+          <a href="works.html"    class="btn btn-glass"  id="hero-works-btn">Our Works</a>
+        </div>
+      </div>
+      <div class="hero-scroll-hint">
+        <span class="scroll-dot"></span>
+      </div>
+    </section>
+
+    <!-- ========== sTUDIO INTRO ========== -->
+    <section class="studio-intro" id="about">
+      <div class="intro-container">
+        <div class="intro-card animate-slide-left">
+          <img src="assets/Studio-logo-card.png" alt="ASK Grapika Studio" class="intro-card-img" />
+        </div>
+        <div class="intro-text animate-slide-right">
+          <p class="intro-heading">
+            <span class="orange-text">ASK Grapika</span> is a modern creative Studio specializing in graphic design, UI/UX, AI Design, branding, video editing, and digital visual experiences.<br/><br/>
+            We create clean, cinematic, and impactful designs that blend creativity with modern technology.
+          </p>
+          <a href="about.html" class="btn btn-dark" id="know-more-btn">Know More</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== sERVICEs HEADER (orange gradient bg) ========== -->
+    <section class="Services-header">
+      <div class="Services-header-glow"></div>
+      <h2 class="Services-title animate-fade-up">Our Services</h2>
+    </section>
+
+    <!-- ========== sERVICEs â€” sTACKED CARD DECK ========== -->
+    <section class="Services-section" id="Services">
+      <div class="srv-deck-wrap">
+
+        <!-- stacked card deck -->
+        <div class="srv-deck animate-scale-in" id="srv-deck">
+
+          <!-- Card 1: AI Creative Services -->
+          <div class="srv-deck-card srv-card-1">
+            <div class="srv-card-img-box">
+              <img src="assets/Services/AI Creative Services 1.jpeg" alt="AI Creative Services" />
+            </div>
+            <p class="srv-card-name">AI Creative Services</p>
+          </div>
+
+          <!-- Card 2: AI Design & Visualization -->
+          <div class="srv-deck-card srv-card-2">
+            <div class="srv-card-img-box">
+              <img src="assets/Services/AI design & visualzation.jpeg" alt="AI Design & Visualization" />
+            </div>
+            <p class="srv-card-name">AI Design &amp; Visualization</p>
+          </div>
+
+          <!-- Card 3: UI/UX Design -->
+          <div class="srv-deck-card srv-card-3">
+            <div class="srv-card-img-box">
+              <img src="assets/Services/ui ux design.jpeg" alt="UI/UX Design" />
+            </div>
+            <p class="srv-card-name">UI / UX Design</p>
+          </div>
+
+          <!-- Card 4: Graphic Design -->
+          <div class="srv-deck-card srv-card-4">
+            <div class="srv-card-img-box">
+              <img src="assets/Services/graphic design.jpeg" alt="Graphic Design" />
+            </div>
+            <p class="srv-card-name">Graphic Design</p>
+          </div>
+
+          <!-- Card 5: Video Editing -->
+          <div class="srv-deck-card srv-card-5">
+            <div class="srv-card-img-box">
+              <img src="assets/Services/video editing.jpeg" alt="Video Editing" />
+            </div>
+            <p class="srv-card-name">Video Editing</p>
+          </div>
+
+          <!-- Card 6: Album Design & Printing -->
+          <div class="srv-deck-card srv-card-6">
+            <div class="srv-card-img-box">
+              <img src="assets/Services/Printing Services.jpeg" alt="Album Design & Printing" />
+            </div>
+            <p class="srv-card-name">Album Design &amp; Printing</p>
+          </div>
+
+          <!-- Card 7: Corporate Gifting â€” always on top when stacked -->
+          <div class="srv-deck-card srv-card-7">
+            <div class="srv-card-img-box">
+              <img src="assets/Services/corporate gifting.jpeg" alt="Custom Corporate Gifting" />
+              <!-- shown only in stacked state -->
+              <div class="srv-card-stack-label">Explore Services</div>
+            </div>
+            <p class="srv-card-name">Custom Corporate Gifting</p>
+          </div>
+
+        </div>
+
+        <!-- Know More CTA -->
+        <div class="Services-more animate-fade-up delay-2">
+          <a href="services.html" class="btn btn-dark" id="services-more-btn">Know More</a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========== INTERACTIVE DEsIGN PLAYGROUND ========== -->
+    <section class="playground-section" id="creative-banner">
+      <p class="playground-label animate-fade-up">&#127912; Select a tool, drag to create shapes, or type text on the canvas!</p>
+      <div class="playground-workspace" id="playgroundWorkspace">
+        <!-- Freehand drawing canvas (sits behind shapes) -->
+        <canvas id="drawCanvas"></canvas>
+        <!-- shapes will be created here dynamically -->
+      </div>
+      <div class="playground-toolbar" id="playgroundToolbar">
+        <button class="tool-btn active" data-tool="square" id="tool-square" title="square">
+          <svg viewBox="0 0 24 24" fill="currentColor"><rect x="3" y="3" width="18" height="18" rx="2"/></svg>
+        </button>
+        <button class="tool-btn" data-tool="circle" id="tool-circle" title="Circle">
+          <svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/></svg>
+        </button>
+        <button class="tool-btn" data-tool="hexagon" id="tool-hexagon" title="Hexagon">
+          <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 22,7 22,17 12,22 2,17 2,7"/></svg>
+        </button>
+        <button class="tool-btn" data-tool="triangle" id="tool-triangle" title="Triangle">
+          <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12,3 22,21 2,21"/></svg>
+        </button>
+        <button class="tool-btn" data-tool="pencil" id="tool-pencil" title="Pencil (Freehand)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.83 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"/></svg>
+        </button>
+        <button class="tool-btn" data-tool="text" id="tool-text" title="Text">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 7 4 4 20 4 20 7"/><line x1="9.5" y1="20" x2="14.5" y2="20"/><line x1="12" y1="4" x2="12" y2="20"/></svg>
+        </button>
+        <div class="tool-divider"></div>
+        <label class="tool-color-wrap" title="Pick a color">
+          <input type="color" id="colorPicker" value="#FF7700" class="tool-color-input" />
+          <span class="tool-color-preview" id="colorPreview" style="background:#FF7700;"></span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="tool-color-icon"><circle cx="12" cy="12" r="10"/><path d="M12 2a10 10 0 0 1 0 20 10 10 0 0 1 0-20" stroke="url(#rainbow)"/><defs><linearGradient id="rainbow" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#ff0000"/><stop offset="25%" stop-color="#ffff00"/><stop offset="50%" stop-color="#00ff00"/><stop offset="75%" stop-color="#0000ff"/><stop offset="100%" stop-color="#ff00ff"/></linearGradient></defs></svg>
+        </label>
+        <div class="tool-divider"></div>
+        <button class="tool-btn tool-clear" id="tool-clear" title="Clear All">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+        </button>
+      </div>
+    </section>
+
+    <!-- ========== CREATIVE WORKs ========== -->
+    <section class="works-section" id="works">
+      <div class="works-bg">
+        <img src="assets/creative-works-collage.jpg.jpeg" alt="Creative Works" class="works-bg-img" />
+        <div class="works-overlay"></div>
+      </div>
+      <div class="works-content">
+        <h2 class="works-heading animate-fade-up">"Explore Our Creative Works"</h2>
+        <a href="works.html" class="btn btn-white" id="check-works-btn">Check Our Works</a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="footer" id="contact">
+    <div class="footer-container">
+
+      <!-- Brand -->
+      <div class="footer-col footer-brand">
+        <div class="footer-logo">
+          <span class="logo-ask">ASK</span>
+          <span class="logo-grapika">Grapika</span>
+        </div>
+        <p class="footer-desc">Crafting modern digital experiences through creativity, design, storytelling, and innovative visual solutions.</p>
+      </div>
+
+      <!-- Quick Links -->
+      <div class="footer-col footer-links">
+        <h4 class="footer-heading">Quick Links</h4>
+        <ul>
+          <li><a href="index.html"    id="footer-home">Home</a></li>
+          <li><a href="about.html"    id="footer-about">About</a></li>
+          <li><a href="services.html" id="footer-services">Services</a></li>
+          <li><a href="clients.html"  id="footer-clients">Who We Work With</a></li>
+          <li><a href="works.html"    id="footer-works">Works</a></li>
+          <li><a href="contact.html"  id="footer-contact">Contact Us</a></li>
+        </ul>
+      </div>
+
+            <!-- Contact -->
+            <!-- Contact -->
+      <div class="footer-col footer-contact-info">
+        <h4 class="footer-heading">Email &amp; Location</h4>
+        <p><span class="contact-label">Email:</span> askgrapika@gmail.com</p>
+        <p><span class="contact-label">Location:</span> Boda Hanuman mandir, Yerramillistreet,<br/>Amalapuram, Konaseema dist,<br/>Andhra Pradesh - 533201</p>
+        <div class="footer-socials">
+          <a href="https://www.youtube.com/@ASKgrapika" class="social-link" id="social-youtube" aria-label="YouTube" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+          </a>
+          <a href="https://www.instagram.com/askgrapika/" class="social-link" id="social-instagram" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </a>
+          <a href="https://wa.me/919100604935" class="social-link" id="social-whatsapp" aria-label="WhatsApp" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          </a>
+          <a href="https://www.facebook.com/share/1DEVViSaph/" class="social-link" id="social-facebook" aria-label="Facebook" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+          </a>
+          <a href="https://www.behance.net/suryakrishnachanakya" class="social-link" id="social-behance" aria-label="Behance" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 7h-7V5h7v2zm1.726 10c-.442 1.297-2.029 3-5.101 3-3.074 0-5.564-1.729-5.564-5.675 0-3.91 2.325-5.92 5.466-5.92 3.082 0 4.964 1.782 5.375 4.426.078.506.109 1.188.095 2.14H15.97c.13 3.211 3.483 3.312 4.588 2.029H23.72zm-7.726-3h3.427c-.123-1.979-1.32-2.004-1.758-2-1.49 0-1.56 1.583-1.669 2zM7.17 10.6c.857-.107 1.874-.428 1.874-1.798 0-1.37-.893-1.82-2.274-1.82H1v10.04h5.917c2.084 0 3.336-.893 3.336-2.857 0-1.607-.893-2.454-3.083-2.454v-.011zm-3.64-1.74h2.917c.75 0 1.25.25 1.25 1 0 .75-.5 1.083-1.25 1.083H3.53V8.86zm3.25 5.714H3.53v-2.5h3.25c.893 0 1.5.357 1.5 1.25s-.607 1.25-1.5 1.25z"/></svg>
+          </a>
+        </div>
+      </div>
+
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 ASK Grapika. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
+
+
+
+
+

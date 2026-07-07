@@ -1,0 +1,802 @@
+/* ======================================================
+   ASK GRAPIKA — WORKS PAGE STYLESHEET
+   Bento grid + filter sub-navbar + lightbox + animations
+   ====================================================== */
+
+/* ---------- PAGE LAYOUT ---------- */
+.page-main {
+  padding-top: 64px;
+}
+
+/* ---------- WORKS HERO (compact) ---------- */
+.works-hero {
+  position: relative;
+  padding: 4.5rem 2rem 2rem;
+  text-align: center;
+  background: var(--black);
+  overflow: hidden;
+}
+
+.works-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 60% 50% at 50% 0%, rgba(255, 119, 0, 0.12) 0%, transparent 70%),
+    radial-gradient(circle at 80% 80%, rgba(255, 69, 0, 0.06) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.works-hero-content {
+  position: relative;
+  z-index: 2;
+}
+
+.works-page-title {
+  font-family: var(--font-satista);
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 0.5rem;
+}
+
+.works-page-title .orange-text {
+  color: var(--orange);
+  text-shadow: 0 0 30px rgba(255, 119, 0, 0.4);
+}
+
+.works-page-subtitle {
+  font-size: 0.95rem;
+  color: var(--grey-1);
+  max-width: 500px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+/* ======================================================
+   FILTER SUB-NAVBAR
+   Sticky glassmorphic bar with pill-shaped filter buttons
+   ====================================================== */
+.works-filter-nav {
+  position: sticky;
+  top: 64px;
+  z-index: 100;
+  background: rgba(18, 18, 18, 0.75);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-bottom: 1px solid rgba(255, 119, 0, 0.12);
+  padding: 1rem 1.5rem;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.works-filter-nav::-webkit-scrollbar {
+  display: none;
+}
+
+.filter-track {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  min-width: max-content;
+}
+
+/* Individual filter button */
+.filter-btn {
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: var(--grey-1);
+  background: transparent;
+  border: 1.5px solid rgba(255, 255, 255, 0.1);
+  border-radius: 100px;
+  padding: 0.55rem 1.3rem;
+  cursor: pointer;
+  white-space: nowrap;
+  transition:
+    color 0.3s ease,
+    background 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease,
+    transform 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.filter-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(135deg, rgba(255, 119, 0, 0.15), rgba(255, 69, 0, 0.08));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.filter-btn:hover {
+  color: var(--white);
+  border-color: rgba(255, 119, 0, 0.35);
+  transform: translateY(-1px);
+}
+
+.filter-btn:hover::before {
+  opacity: 1;
+}
+
+.filter-btn:active {
+  transform: translateY(0) scale(0.97);
+}
+
+/* Active state */
+.filter-btn.active {
+  color: var(--white);
+  background: linear-gradient(135deg, var(--orange) 0%, var(--orange-2) 100%);
+  border-color: var(--orange);
+  box-shadow:
+    0 4px 20px rgba(255, 119, 0, 0.35),
+    0 0 0 1px rgba(255, 119, 0, 0.2);
+  font-weight: 600;
+}
+
+.filter-btn.active::before {
+  opacity: 0;
+}
+
+/* Active indicator dot */
+.filter-btn.active::after {
+  content: '';
+  position: absolute;
+  bottom: 4px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--white);
+  box-shadow: 0 0 6px rgba(255, 255, 255, 0.5);
+}
+
+/* ======================================================
+   WORKS GRID SECTION — container for bento panels
+   ====================================================== */
+.works-grid-section {
+  background: var(--dark);
+  padding: 3rem 2rem 5rem;
+  min-height: 60vh;
+  position: relative;
+}
+
+.works-grid-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 120px;
+  background: linear-gradient(to bottom, var(--black), transparent);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ---------- BENTO GRID PANEL (per filter view) ---------- */
+.bento-panel {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+  display: none;
+}
+
+.bento-panel.active {
+  display: block;
+  animation: panelFadeIn 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes panelFadeIn {
+  0% { opacity: 0; transform: translateY(12px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* ======================================================
+   BENTO GRID — asymmetric tile layout
+   Uses CSS grid with named areas for visual variety
+   ====================================================== */
+.bento-grid {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: 200px;
+}
+
+/* Bento size classes */
+.bento-item.span-2c { grid-column: span 2; }
+.bento-item.span-2r { grid-row: span 2; }
+.bento-item.span-2c2r { grid-column: span 2; grid-row: span 2; }
+
+/* ---------- BENTO ITEM / CARD ---------- */
+.bento-item {
+  position: relative;
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--dark-2);
+  border: 1px solid rgba(255, 119, 0, 0.08);
+  cursor: pointer;
+  transition:
+    border-color 0.4s ease,
+    box-shadow 0.4s ease;
+}
+
+.bento-item:hover {
+  border-color: rgba(255, 119, 0, 0.35);
+  box-shadow:
+    0 12px 40px rgba(255, 119, 0, 0.15),
+    0 0 0 1px rgba(255, 119, 0, 0.2);
+}
+
+.bento-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* "All Works" panel: hover zooms image slightly + shows overlay */
+.bento-panel[data-panel="all"] .bento-item:hover img {
+  transform: scale(1.06);
+}
+
+/* Service panels: hover zooms image 1.5x */
+.bento-panel[data-panel="ai-creative"] .bento-item:hover img,
+.bento-panel[data-panel="ai-design"] .bento-item:hover img,
+.bento-panel[data-panel="graphic"] .bento-item:hover img {
+  transform: scale(1.5);
+}
+
+/* ---------- OVERLAY (service label — "All Works" only) ---------- */
+.bento-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.88) 0%,
+    rgba(0, 0, 0, 0.25) 45%,
+    transparent 100%
+  );
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 1.2rem;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+
+.bento-item:hover .bento-overlay {
+  opacity: 1;
+}
+
+.bento-overlay-title {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--white);
+  margin-bottom: 0.15rem;
+}
+
+.bento-overlay-category {
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: var(--orange-light);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* ---------- GRAPHIC DESIGN MASONRY (Manuscript style) ---------- */
+.graphic-masonry {
+  column-count: 4;
+  column-gap: 1.5rem;
+  width: 100%;
+}
+.graphic-masonry .bento-item {
+  display: inline-block;
+  width: 100%;
+  margin-bottom: 1.5rem;
+  border-radius: var(--radius);
+  overflow: hidden;
+  position: relative;
+  cursor: zoom-in;
+  /* Override any grid-based height forcing */
+  height: auto !important;
+  aspect-ratio: auto !important;
+}
+.graphic-masonry .bento-item img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ======================================================
+   FULLSCREEN LIGHTBOX
+   ====================================================== */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  background: rgba(0, 0, 0, 0.92);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.4s ease, visibility 0.4s ease;
+  cursor: zoom-out;
+}
+
+.lightbox.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.lightbox-img {
+  max-width: 92vw;
+  max-height: 90vh;
+  object-fit: contain;
+  border-radius: var(--radius);
+  box-shadow: 0 20px 80px rgba(0, 0, 0, 0.6);
+  transform: scale(0.9);
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.lightbox.open .lightbox-img {
+  transform: scale(1);
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--white);
+  font-size: 1.5rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
+}
+
+.lightbox-close:hover {
+  background: rgba(255, 119, 0, 0.2);
+  border-color: var(--orange);
+  transform: rotate(90deg);
+}
+
+/* Lightbox nav arrows */
+.lightbox-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--white);
+  font-size: 1.3rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+.lightbox-nav:hover {
+  background: rgba(255, 119, 0, 0.2);
+  border-color: var(--orange);
+}
+
+.lightbox-prev { left: 1.5rem; }
+.lightbox-next { right: 1.5rem; }
+
+.lightbox-counter {
+  position: absolute;
+  bottom: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.5);
+  font-weight: 500;
+}
+
+/* ---------- SECTION HEADING for service panels ---------- */
+.panel-heading {
+  font-family: var(--font-satista);
+  font-size: clamp(1.2rem, 3vw, 1.6rem);
+  color: var(--white);
+  margin-bottom: 1.5rem;
+  padding-left: 4px;
+}
+
+.panel-heading .orange-text {
+  color: var(--orange);
+}
+
+/* ---------- EMPTY STATE ---------- */
+.works-empty {
+  text-align: center;
+  padding: 5rem 2rem;
+  display: none;
+}
+
+.works-empty.visible {
+  display: block;
+}
+
+.works-empty p {
+  color: var(--grey-1);
+  font-size: 1.1rem;
+}
+
+.works-empty .orange-text {
+  color: var(--orange);
+}
+
+/* ======================================================
+   UI/UX PROJECT CARDS
+   Card layout: image on top, title + type badge + CTA below
+   ====================================================== */
+.uiux-card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.uiux-card {
+  background: var(--dark-2);
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(255, 119, 0, 0.1);
+  overflow: hidden;
+  transition:
+    transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+    border-color 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+}
+
+.uiux-card:hover {
+  transform: translateY(-8px);
+  box-shadow:
+    0 20px 50px rgba(255, 119, 0, 0.15),
+    0 0 0 1px rgba(255, 119, 0, 0.25);
+  border-color: rgba(255, 119, 0, 0.35);
+}
+
+/* Card image area */
+.uiux-card-img {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background: var(--dark-3);
+}
+
+.uiux-card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.uiux-card:hover .uiux-card-img img {
+  transform: scale(1.06);
+}
+
+/* Card info area */
+.uiux-card-info {
+  padding: 1.25rem 1.4rem 1.4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  flex: 1;
+}
+
+.uiux-card-title {
+  font-family: var(--font-body);
+  font-size: 1.1rem;
+  font-weight: 650;
+  color: var(--white);
+  line-height: 1.3;
+}
+
+/* Work type badge */
+.uiux-card-type {
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--orange-light);
+  background: rgba(255, 119, 0, 0.1);
+  border: 1px solid rgba(255, 119, 0, 0.2);
+  border-radius: 100px;
+  padding: 0.3rem 0.85rem;
+}
+
+/* Behance CTA button */
+.uiux-card-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  align-self: flex-start;
+  margin-top: auto;
+  padding: 0.55rem 1.3rem;
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--white);
+  background: linear-gradient(135deg, var(--orange) 0%, var(--orange-2) 100%);
+  border: none;
+  border-radius: 100px;
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    box-shadow 0.3s ease,
+    transform 0.2s ease;
+  gap: 0.4rem;
+}
+
+.uiux-card-btn::after {
+  content: '→';
+  font-size: 0.9rem;
+  transition: transform 0.3s ease;
+}
+
+.uiux-card-btn:hover {
+  box-shadow:
+    0 6px 24px rgba(255, 119, 0, 0.4),
+    0 0 0 1px rgba(255, 119, 0, 0.3);
+  transform: translateY(-1px);
+}
+
+.uiux-card-btn:hover::after {
+  transform: translateX(3px);
+}
+
+.uiux-card-btn:active {
+  transform: translateY(0) scale(0.97);
+}
+
+/* ======================================================
+   RESPONSIVE
+   ====================================================== */
+@media (max-width: 900px) {
+  .bento-grid {
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: 180px;
+  }
+
+  .filter-track {
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 680px) {
+  .bento-grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: 160px;
+    gap: 8px;
+  }
+
+  /* Reset large spans on small screens */
+  .bento-item.span-2c { grid-column: span 1; }
+  .bento-item.span-2c2r { grid-column: span 2; grid-row: span 1; }
+}
+
+@media (max-width: 480px) {
+  .bento-grid {
+    grid-template-columns: 1fr 1fr;
+    grid-auto-rows: 150px;
+  }
+
+  .uiux-card-grid {
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+  }
+
+  .works-filter-nav {
+    padding: 0.8rem 1rem;
+  }
+
+  .filter-btn {
+    font-size: 0.78rem;
+    padding: 0.5rem 1rem;
+  }
+
+  .works-hero {
+    padding: 3.5rem 1.5rem 1.5rem;
+  }
+
+  .lightbox-nav { display: none; }
+}
+@media (max-width: 900px) {
+  .graphic-masonry { column-count: 3; }
+}
+@media (max-width: 600px) {
+  .graphic-masonry { column-count: 2; column-gap: 1rem; }
+  .graphic-masonry .bento-item { margin-bottom: 1rem; }
+}
+
+/* ---------- AI VIDEO GRID ---------- */
+.ai-video-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.video-card {
+  display: flex;
+  flex-direction: column;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius);
+  overflow: hidden;
+  text-decoration: none;
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+.video-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(255, 119, 0, 0.4);
+}
+.video-thumb {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+}
+.video-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+.video-card:hover .video-thumb img {
+  transform: scale(1.05);
+}
+.play-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(255, 119, 0, 0.85);
+  color: #fff;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-size: 1.2rem;
+  padding-left: 4px;
+  opacity: 0.9;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  backdrop-filter: blur(4px);
+}
+.video-card:hover .play-btn {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1.1);
+}
+.video-title {
+  padding: 1.2rem;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--white);
+  font-family: var(--font-satista);
+  text-align: center;
+}
+
+@media (max-width: 900px) {
+  .ai-video-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 600px) {
+  .ai-video-grid { grid-template-columns: 1fr; }
+}
+
+/* ---------- AI CREATIVE MASONRY (Manuscript style, 3 columns) ---------- */
+.ai-creative-masonry {
+  column-count: 3;
+  column-gap: 1.5rem;
+  width: 100%;
+  padding: 1.5rem 0;
+}
+
+.ai-creative-masonry .bento-item {
+  display: inline-block;
+  width: 100%;
+  margin-bottom: 1.5rem;
+  break-inside: avoid;
+  border-radius: var(--radius);
+  overflow: hidden;
+  position: relative;
+  aspect-ratio: auto !important;
+}
+
+.ai-creative-masonry .bento-item img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+@media (max-width: 900px) {
+  .ai-creative-masonry {
+    column-count: 2;
+    column-gap: 1.2rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .ai-creative-masonry {
+    column-count: 1;
+  }
+  .ai-creative-masonry .bento-item {
+    margin-bottom: 1.2rem;
+  }
+}
+
+/* ---------- UNIFIED WORKS MASONRY (Manuscript Layout - 3 Columns) ---------- */
+.works-masonry {
+  column-count: 3;
+  column-gap: 1.5rem;
+  width: 100%;
+  padding: 1.5rem 0;
+}
+
+.works-masonry .bento-item {
+  display: inline-block;
+  width: 100%;
+  margin-bottom: 1.5rem;
+  break-inside: avoid;
+  border-radius: var(--radius);
+  overflow: hidden;
+  position: relative;
+  aspect-ratio: auto !important;
+}
+
+.works-masonry .bento-item img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+@media (max-width: 900px) {
+  .works-masonry {
+    column-count: 2;
+    column-gap: 1.2rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .works-masonry {
+    column-count: 1;
+  }
+  .works-masonry .bento-item {
+    margin-bottom: 1.2rem;
+  }
+}

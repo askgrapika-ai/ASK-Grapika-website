@@ -1,0 +1,198 @@
+/* ======================================================
+   SERVICES PAGE — STYLES (updated palette & fonts)
+   ====================================================== */
+
+/* ======================================================
+   SERVICES HERO
+   ====================================================== */
+.srv-hero {
+  position: relative;
+  min-height: 24vh;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+  background: var(--dark);
+}
+.srv-hero-bg { position: absolute; inset: 0; overflow: hidden; }
+.srv-hero-bg-img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  opacity: 0.15;
+}
+.srv-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(18,18,18,0.5), rgba(18,18,18,0.92));
+}
+.srv-hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 1100px;
+  margin: 0 auto;
+  width: 100%;
+  padding: 4rem 2rem 2rem;
+}
+.srv-page-title {
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-align: center;
+}
+
+/* ======================================================
+   SERVICES LIST SECTION
+   ====================================================== */
+.services-list-section {
+  position: relative;
+  background: var(--dark);
+  overflow: hidden;
+}
+.srv-list-bg { position: absolute; inset: 0; z-index: 0; }
+.srv-list-bg-img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  opacity: 0.2;
+}
+.srv-list-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(18, 18, 18, 0.82);
+}
+.srv-list-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 4rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* ── Each service row ── */
+.srv-item {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3.5rem;
+  align-items: stretch;       /* both columns equal height */
+  padding: 4rem 0;
+  border-bottom: 1px solid rgba(255, 119, 0, 0.1);
+  transition: background var(--transition);
+}
+.srv-item:last-child { border-bottom: none; }
+.srv-item:hover { background: rgba(255, 119, 0, 0.025); }
+
+/* Reversed — text right, image left */
+.srv-item-reverse .srv-item-text { order: 2; }
+.srv-item-reverse .srv-item-img-wrap { order: 1; }
+
+.srv-item-title {
+  font-family: var(--font-heading);
+  font-size: clamp(1.3rem, 3vw, 1.9rem);
+  font-weight: 700;
+  margin-bottom: 1.25rem;
+  color: var(--orange);
+  transition: text-shadow var(--transition);
+}
+.srv-item:hover .srv-item-title {
+  text-shadow: 0 0 22px rgba(255, 119, 0, 0.45);
+}
+.srv-item-text p {
+  font-size: 0.92rem;
+  color: rgba(255,255,255,0.75);
+  line-height: 1.9;
+  font-family: var(--font-body);
+}
+
+.srv-item-img-wrap {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid rgba(255, 119, 0, 0.18);
+  box-shadow: 0 4px 30px rgba(0,0,0,0.4);
+  transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+  /* No fixed aspect-ratio — height matches the text column via align-items: stretch */
+  min-height: 280px;          /* safety floor so very short text doesn't collapse the image */
+  display: flex;
+  align-items: stretch;
+}
+.srv-item-img-wrap:hover {
+  transform: scale(1.03);
+  box-shadow: 0 12px 50px rgba(255, 119, 0, 0.22);
+  border-color: var(--orange);
+}
+.srv-item-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  flex: 1;                    /* fills the flex container height */
+  transition: transform 0.55s ease;
+}
+.srv-item-img-wrap:hover .srv-item-img { transform: scale(1.07); }
+
+/* Text column — flex so it stretches to match grid row height */
+.srv-item-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* ======================================================
+   WORKS CTA
+   ====================================================== */
+.srv-works-cta {
+  position: relative;
+  min-height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.srv-cta-bg { position: absolute; inset: 0; }
+.srv-cta-bg-img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  opacity: 0.55;
+}
+.srv-cta-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+}
+.srv-cta-inner {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: 4rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+.srv-cta-heading {
+  font-family: var(--font-heading);
+  font-size: clamp(1.6rem, 4vw, 2.5rem);
+  font-weight: 700;
+  font-style: italic;
+  color: var(--orange);
+  text-shadow: 0 0 22px rgba(255,119,0,0.5), 2px 2px 0 rgba(0,0,0,0.7);
+}
+
+/* ======================================================
+   RESPONSIVE
+   ====================================================== */
+@media (max-width: 768px) {
+  .srv-item, .srv-item-reverse {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    padding: 3rem 0;
+  }
+  .srv-item-reverse .srv-item-text { order: 1; }
+  .srv-item-reverse .srv-item-img-wrap { order: 2; }
+  .srv-item-img-wrap { min-height: 220px; aspect-ratio: 16/9; }
+}
+@media (max-width: 480px) {
+  .srv-list-inner { padding: 2rem 1.25rem; }
+  .srv-item { padding: 2rem 0; }
+}
